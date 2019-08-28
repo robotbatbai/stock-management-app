@@ -13,6 +13,7 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
