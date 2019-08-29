@@ -1,12 +1,17 @@
 <template>
-  <v-col cols="12" md="12">
+  <v-col>
     <v-select
-          v-model="type"
-          :items='["Default", "Upper", "Middle", "Lower","NewItem", "Deleted"]'
-          label="Level"
-          solo
-          >
-      </v-select>
+      v-model="type"
+      :items='["Default", "Upper", "Middle", "Lower","NewItem", "Deleted"]'
+      label="Level"
+      solo
+    >
+    </v-select>
+    <v-text-field
+      placeholder="Search"
+      v-model="search"
+      solo
+    ></v-text-field>
     <v-expansion-panels>
       <v-expansion-panel
         v-for="follow in filterList"
@@ -28,33 +33,41 @@ export default {
     return {
       follows: [],
       currentlyEditing: null,
-      type: null
+      type: null,
+      search: ''
     }
   },
   computed: {
     filterList () {
       return this.follows.filter((value) => {
+        var where = true
         // Level Upper
         if (this.type === 'Upper') {
-          return Number(value.Level) === 0 && value.Deleted === false
+          where = where && Number(value.Level) === 0
         }
         // Level Middle
         if (this.type === 'Middle') {
-          return Number(value.Level) === 1 && value.Deleted === false
+          where = where && Number(value.Level) === 1
         }
         // Level Lower
         if (this.type === 'Lower') {
-          return Number(value.Level) === 2 && value.Deleted === false
+          where = where && Number(value.Level) === 2
         }
         // New Item
         if (this.type === 'NewItem') {
-          return Number(value.Level) === 3 && value.Deleted === false
+          where = where && Number(value.Level) === 3
         }
         // Deleted Item
         if (this.type === 'Deleted') {
-          return value.Deleted === true
+          where = where && value.Deleted === true
+        } else {
+          where = where && value.Deleted === false
         }
-        return value.Deleted === false
+        // search
+        if (this.search.trim() !== '') {
+          where = where && value.Code.includes(this.search.trim())
+        }
+        return where
       })
     }
   },

@@ -25,7 +25,7 @@ export default {
         Level: 3,
         rating: 3,
         Types: ['manual'],
-        Code: this.newFollow,
+        Code: this.newFollow.trim(),
         CreatedAt: Date.now(),
         Deleted: false
       })

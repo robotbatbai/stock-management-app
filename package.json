@@ -1,7 +1,7 @@
 {
   "name": "stocks-management-app",
   "version": "1.0.0",
-  "description": " demo todo app",
+  "description": " stocks management tool for robotbatbai",
   "author": "robotbatbai <robotbatbai@gmail.com>",
   "private": true,
   "homepage": "https://robotbatbai.github.io/stock-management-app/",
