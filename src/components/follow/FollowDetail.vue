@@ -1,11 +1,14 @@
 <template>
-  <div>
+  <div :class="follow.Status > 0 ? 'cyan' : ''">
     <v-expansion-panel-header>
       <v-row>
         <v-col cols="4" md="2">
           {{follow.Code}}
         </v-col>
-        <v-col cols="8">
+        <v-col cols="4" md="2">
+          <p :class="follow.Status > 2 ? 'red--text' : ''">{{follow.Status}}</p>
+        </v-col>
+        <v-col cols="8" md="6">
           <v-rating small v-model="follow.rating" readonly></v-rating>
         </v-col>
         <v-col cols="12" md="2">
