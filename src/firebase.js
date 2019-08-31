@@ -13,3 +13,4 @@ const app = firebase.initializeApp(config)
 
 export const db = app.firestore()
 export const followsCollection = db.collection('follows')
+export const transCollection = db.collection('trans')

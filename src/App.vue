@@ -18,6 +18,14 @@
                         <v-list-item-title>Follow</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+                <v-list-item @click="$router.push('/trans')">
+                    <v-list-item-action>
+                        <v-icon>contact_mail</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>Trans</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
             </v-list>
         </v-navigation-drawer>
 

@@ -2,10 +2,10 @@
   <v-row>
     <v-col cols="12" md="12">
       <v-list>
-        <v-list-item v-for="(note,i) in follow.Note" :key="i" two-line>
+        <v-list-item v-for="(note,i) in trans.Note" :key="i" two-line>
           <v-list-item-content>
-            <v-list-item-title>{{note.AddDate | formatDate}}</v-list-item-title>
-            <v-list-item-subtitle>{{note.Memo}}</v-list-item-subtitle>
+            <v-list-item-title>{{note.created_at | formatDate}}</v-list-item-title>
+            <v-list-item-subtitle>{{note.memo}}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -24,29 +24,29 @@
 </template>
 
 <script>
-import { followsCollection } from '../../firebase'
+import { transCollection } from '../../firebase'
 export default {
   data () {
     return {
       newNote: ''
     }
   },
-  props: ['follow'],
+  props: ['trans'],
   methods: {
     addNote () {
       var tmp = {
-        Memo: this.newNote,
-        AddDate: Math.floor(Date.now() / 1000),
-        Status: ''
+        memo: this.newNote,
+        created_at: Math.floor(Date.now() / 1000),
+        status: false
       }
-      if (typeof this.follow.Note === 'undefined') {
+      if (typeof this.trans.note === 'undefined') {
         var notes = []
       } else {
-        notes = this.follow.Note
+        notes = this.trans.note
       }
       notes.push(tmp)
-      followsCollection.doc(this.follow.id).update({
-        Note: notes
+      transCollection.doc(this.trans.id).update({
+        note: notes
       })
         .then(function (docRef) {
           console.log(' Updated Note')

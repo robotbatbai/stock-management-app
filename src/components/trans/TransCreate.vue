@@ -2,32 +2,30 @@
   <v-col cols="12" md="12" style="background: #FFFFFF;">
     <v-form>
       <v-text-field
-        v-model="newFollow"
+        v-model="newtrans"
         label="Input Code"
       ></v-text-field>
-      <v-btn @click.prevent="addFollow()">Add</v-btn>
+      <v-btn @click.prevent="addtrans()">Add</v-btn>
       <v-btn @click="clear">clear</v-btn>
     </v-form>
   </v-col>
 </template>
 
 <script>
-import { followsCollection } from '../../firebase'
+import { transCollection } from '../../firebase'
 export default {
   data () {
     return {
-      newFollow: ''
+      newtrans: ''
     }
   },
   methods: {
-    addFollow () {
-      followsCollection.add({
-        Level: 3,
-        rating: 3,
-        Types: ['NewItem'],
-        Code: this.newFollow.trim(),
-        CreatedAt: Date.now(),
-        Deleted: false
+    addtrans () {
+      transCollection.add({
+        code: this.newtrans.trim(),
+        created_at: Date.now(),
+        updated_at: Date.now(),
+        status: false
       })
         .then(function (docRef) {
           console.log('Document written with ID: ', docRef.id)
@@ -35,10 +33,10 @@ export default {
         .catch(function (error) {
           console.error('Error adding document: ', error)
         })
-      this.newFollow = ''
+      this.newtrans = ''
     },
     clear () {
-      this.newFollow = ''
+      this.newtrans = ''
     }
   }
 }
