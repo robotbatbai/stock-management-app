@@ -77,7 +77,7 @@ export default {
   },
   firestore () {
     return {
-      follows: followsCollection.orderBy('Level', 'asc').orderBy('rating', 'desc')
+      follows: followsCollection.orderBy('Level', 'asc').orderBy('Status', 'desc')
     }
   }
 }

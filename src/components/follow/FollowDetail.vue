@@ -1,5 +1,5 @@
 <template>
-  <div :class="follow.Status > 0 ? 'cyan' : ''">
+  <div :class="follow.Status > 0 ? 'red lighten-4' : ''">
     <v-expansion-panel-header>
       <v-row>
         <v-col cols="4" md="2">
