@@ -25,7 +25,9 @@ export default {
         code: this.newtrans.trim(),
         created_at: Date.now(),
         updated_at: Date.now(),
-        status: false
+        status: false,
+        sell_price: 0,
+        bought_price: 0
       })
         .then(function (docRef) {
           console.log('Document written with ID: ', docRef.id)

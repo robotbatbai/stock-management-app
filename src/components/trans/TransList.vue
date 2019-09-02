@@ -44,6 +44,8 @@ export default {
         // Level Upper
         if (this.type === 'Finish') {
           where = where && value.status === true
+        } else {
+          where = where && value.status === false
         }
         // Level Middle
         if (this.type === 'Won') {

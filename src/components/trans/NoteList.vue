@@ -2,10 +2,11 @@
   <v-row>
     <v-col cols="12" md="12">
       <v-list>
-        <v-list-item v-for="(note,i) in trans.Note" :key="i" two-line>
+        <v-list-item v-for="(note,i) in trans.note" :key="i" two-line>
           <v-list-item-content>
             <v-list-item-title>{{note.created_at | formatDate}}</v-list-item-title>
             <v-list-item-subtitle>{{note.memo}}</v-list-item-subtitle>
+            <v-divider></v-divider>
           </v-list-item-content>
         </v-list-item>
       </v-list>

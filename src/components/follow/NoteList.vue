@@ -6,6 +6,7 @@
           <v-list-item-content>
             <v-list-item-title>{{note.AddDate | formatDate}}</v-list-item-title>
             <v-list-item-subtitle>{{note.Memo}}</v-list-item-subtitle>
+            <v-divider></v-divider>
           </v-list-item-content>
         </v-list-item>
       </v-list>
