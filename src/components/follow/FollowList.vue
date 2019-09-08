@@ -2,7 +2,7 @@
   <v-col>
     <v-select
       v-model="type"
-      :items='["Default", "Upper", "Middle", "Lower","NewItem", "Deleted"]'
+      :items='["Follow", "Upper", "Middle", "Lower","NewItem", "Deleted"]'
       label="Level"
       solo
     >
@@ -33,7 +33,7 @@ export default {
     return {
       follows: [],
       currentlyEditing: null,
-      type: null,
+      type: 'Follow',
       search: ''
     }
   },
@@ -41,6 +41,9 @@ export default {
     filterList () {
       return this.follows.filter((value) => {
         var where = true
+        if (this.type === 'Follow') {
+          where = where && Number(value.rating) > 3 && Number(value.Level) < 2
+        }
         // Level Upper
         if (this.type === 'Upper') {
           where = where && Number(value.Level) === 0
