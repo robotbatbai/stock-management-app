@@ -26,6 +26,7 @@ export default {
         created_at: Date.now(),
         updated_at: Date.now(),
         status: false,
+        profit: 0,
         sell_price: 0,
         bought_price: 0
       })
