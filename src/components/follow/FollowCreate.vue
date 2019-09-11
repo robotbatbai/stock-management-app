@@ -25,6 +25,7 @@ export default {
         Level: 3,
         rating: 3,
         Types: ['NewItem'],
+        Status: 0,
         Code: this.newFollow.trim(),
         CreatedAt: Date.now(),
         Deleted: false
