@@ -12,13 +12,15 @@
       v-model="search"
       solo
     ></v-text-field>
-    <v-expansion-panels>
+    <v-expansion-panels
+      v-model="panel"
+    >
       <v-expansion-panel
         v-for="trans in filterList"
         :key="trans.id"
       >
         <trans-detail v-if="currentlyEditing !== trans.id" :trans="trans" @updateNode="currentlyEditing = $event" ></trans-detail>
-        <trans-edit v-else @nodeUpdated="currentlyEditing = null" v-bind:trans="trans"></trans-edit>
+        <trans-edit v-else @nodeUpdated="currentlyEditing = null;panel=[]" v-bind:trans="trans"></trans-edit>
       </v-expansion-panel>
     </v-expansion-panels>
   </v-col>
@@ -34,7 +36,8 @@ export default {
       Trans: [],
       currentlyEditing: null,
       type: null,
-      search: ''
+      search: '',
+      panel: []
     }
   },
   computed: {

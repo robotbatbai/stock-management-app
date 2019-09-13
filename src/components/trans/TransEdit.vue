@@ -9,13 +9,13 @@
       </v-col>
       <v-col cols="12" sm="6" md="3">
         <v-text-field
-            v-model="trans.bought_price"
+            v-model="localTrans.bought_price"
             label="Bought Price"
           ></v-text-field>
       </v-col>
       <v-col cols="12" sm="6" md="3">
         <v-text-field
-            v-model="trans.bought_volume"
+            v-model="localTrans.bought_volume"
             label="Volume"
           ></v-text-field>
       </v-col>
@@ -31,25 +31,25 @@
         >
           <template v-slot:activator="{ on }">
             <v-text-field
-              v-model="trans.bought_date"
+              v-model="localTrans.bought_date"
               label="Bought Date"
               prepend-icon="event"
               readonly
               v-on="on"
             ></v-text-field>
           </template>
-          <v-date-picker v-model="trans.bought_date" @input="menu = false"></v-date-picker>
+          <v-date-picker v-model="localTrans.bought_date" @input="menu = false"></v-date-picker>
         </v-menu>
       </v-col>
       <v-col cols="12" sm="6" md="3">
         <v-text-field
-            v-model="trans.stop_loss"
+            v-model="localTrans.stop_loss"
             label="Stop Loss"
           ></v-text-field>
       </v-col>
       <v-col cols="12" sm="6" md=3>
         <v-text-field
-            v-model="trans.take_profit"
+            v-model="localTrans.take_profit"
             label="Take Profit"
           ></v-text-field>
       </v-col>
@@ -61,7 +61,7 @@
       </v-col>
       <v-col cols="12" sm="6" md="6">
         <v-text-field
-            v-model="trans.sell_price"
+            v-model="localTrans.sell_price"
             label="Sell Price"
           ></v-text-field>
       </v-col>
@@ -77,24 +77,24 @@
         >
           <template v-slot:activator="{ on }">
             <v-text-field
-              v-model="trans.sell_date"
+              v-model="localTrans.sell_date"
               label="Sell Date"
               prepend-icon="event"
               readonly
               v-on="on"
             ></v-text-field>
           </template>
-          <v-date-picker v-model="trans.sell_date" @input="menu2 = false"></v-date-picker>
+          <v-date-picker v-model="localTrans.sell_date" @input="menu2 = false"></v-date-picker>
         </v-menu>
       </v-col>
       <v-col>
         <v-checkbox
-          v-model="trans.status"
+          v-model="localTrans.status"
           label="Transaction Finish"
         ></v-checkbox>
       </v-col>
       <v-col cols="12" md="12">
-        <v-btn class="mr-4" @click.prevent="updatetrans(trans)">Save</v-btn>
+        <v-btn class="mr-4" @click.prevent="updatetrans(localTrans)">Save</v-btn>
       </v-col>
     </v-row>
   </v-form>
@@ -107,7 +107,8 @@ export default {
   data () {
     return {
       menu2: false,
-      menu: false
+      menu: false,
+      localTrans: Object.assign({}, this.trans)
     }
   },
   methods: {

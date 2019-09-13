@@ -10,22 +10,22 @@
         </v-select>
       </v-col>
       <v-col cols="12" md="9">
-        <v-rating v-model="follow.rating"></v-rating>
+        <v-rating v-model="localFollow.rating"></v-rating>
       </v-col>
       <v-col cols="12" sm="6" md="3">
         <v-text-field
-            v-model="follow.StopLoss"
+            v-model="localFollow.StopLoss"
             label="Stop Loss"
           ></v-text-field>
       </v-col>
       <v-col cols="12" sm="6" md=3>
         <v-text-field
-            v-model="follow.TakeProfit"
+            v-model="localFollow.TakeProfit"
             label="Take Profit"
           ></v-text-field>
       </v-col>
       <v-col cols="12" md="12">
-        <v-btn class="mr-4" @click.prevent="updateFollow(follow)">Save</v-btn>
+        <v-btn class="mr-4" @click.prevent="updateFollow(localFollow)">Save</v-btn>
       </v-col>
     </v-row>
   </v-form>
@@ -39,7 +39,8 @@ export default {
     let levels = ['Upper', 'Middle', 'Lower', 'NewItem']
     return {
       levels: levels,
-      le: levels[this.follow.Level]
+      le: levels[this.follow.Level],
+      localFollow: Object.assign({}, this.follow)
     }
   },
   methods: {

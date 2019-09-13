@@ -12,13 +12,15 @@
       v-model="search"
       solo
     ></v-text-field>
-    <v-expansion-panels>
+    <v-expansion-panels
+      v-model="panel"
+    >
       <v-expansion-panel
         v-for="follow in filterList"
         :key="follow.id"
       >
         <follow-detail v-if="currentlyEditing !== follow.id" :follow="follow" @updateNode="currentlyEditing = $event" ></follow-detail>
-        <follow-edit v-else @nodeUpdated="currentlyEditing = null" v-bind:follow="follow"></follow-edit>
+        <follow-edit v-else @nodeUpdated="currentlyEditing = null;panel=[]" v-bind:follow="follow"></follow-edit>
       </v-expansion-panel>
     </v-expansion-panels>
   </v-col>
@@ -34,7 +36,8 @@ export default {
       follows: [],
       currentlyEditing: null,
       type: 'Follow',
-      search: ''
+      search: '',
+      panel: []
     }
   },
   computed: {
