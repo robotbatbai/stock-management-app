@@ -113,8 +113,8 @@ export default {
   },
   methods: {
     updatetrans (trans) {
-      if (this.trans.sell_price !== 0 && this.trans.sell_price !== '') {
-        this.trans.profit = (this.trans.sell_price - this.trans.bought_price) * this.trans.bought_volume
+      if (trans.sell_price !== 0 && trans.sell_price !== '') {
+        trans.profit = (trans.sell_price - trans.bought_price) * trans.bought_volume
       }
       transCollection.doc(this.trans.id).update({...trans})
         .then(function (docRef) {
@@ -123,7 +123,7 @@ export default {
         .catch(function (error) {
           console.error('Error updating document text: ', error)
         })
-      this.$emit('nodeUpdated', this.trans.Code)
+      this.$emit('nodeUpdated', trans.Code)
     }
   }
 }

@@ -53,7 +53,7 @@ export default {
         .catch(function (error) {
           console.error('Error updating document text: ', error)
         })
-      this.$emit('nodeUpdated', this.follow.Code)
+      this.$emit('nodeUpdated', follow.Code)
     }
   }
 }
