@@ -1,5 +1,10 @@
 <template>
-  <v-form>
+  <v-form class="blue lighten-3">
+    <v-row class="mx-auto pa-2">
+        <v-col cols="12" md="12">
+          {{trans.code}}
+        </v-col>
+    </v-row>
     <v-row class="mx-auto pa-2">
       <v-col cols="12">
         <v-subheader>
