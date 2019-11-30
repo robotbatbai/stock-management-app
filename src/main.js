@@ -21,6 +21,13 @@ Vue.filter('formatDate', function (value) {
   }
 })
 
+Vue.filter('newline', function (value) {
+  console.log(value)
+  if (value) {
+    return value.replace('<br>', '\n')
+  }
+})
+
 Vue.filter('getKeyFromValue', function (object, value) {
   return Object.keys(object).find(key => object[key] === value)
 })

@@ -5,7 +5,7 @@
         <v-list-item v-for="(note,i) in follow.Note" :key="i" two-line>
           <v-list-item-content>
             <v-list-item-title>{{note.AddDate | formatDate}}</v-list-item-title>
-            <v-list-item-subtitle>{{note.Memo}}</v-list-item-subtitle>
+            <v-list-item-subtitle class="pre-formatted">{{note.Memo | newline}}</v-list-item-subtitle>
             <v-divider></v-divider>
           </v-list-item-content>
         </v-list-item>
@@ -36,7 +36,7 @@ export default {
   methods: {
     addNote () {
       var tmp = {
-        Memo: this.newNote,
+        Memo: this.newNote.replace(/(?:\r\n|\r|\n)/g, '<br>'),
         AddDate: Math.floor(Date.now() / 1000),
         Status: ''
       }
@@ -60,3 +60,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.pre-formatted {
+  white-space: pre;
+}
+</style>
