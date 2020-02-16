@@ -14,6 +14,7 @@
         <v-col cols="12" md="2">
           <v-btn small class="d-inline" outlined @click="deleteFollow(follow)" color="warning"> <v-icon>delete</v-icon> </v-btn>
           <v-btn small class="d-inline" outlined @click="editFollow(follow)" color="success"> <v-icon>edit</v-icon> </v-btn>
+          <v-btn small outlined :href="'https://kabutan.jp/stock/?code='+follow.Code" target="_blank" color="success"> <v-icon>launch</v-icon></v-btn>
         </v-col>
       </v-row>
     </v-expansion-panel-header>
