@@ -13,7 +13,7 @@
         </v-col>
         <v-col cols="12" md="2">
           <v-btn small class="d-inline" outlined @click="edittrans(trans)" color="success"> <v-icon>edit</v-icon> </v-btn>
-          <v-btn small outlined  :href="'https://kabutan.jp/stock/?code='+trans.code" @click.stop="" target="_blank" color="success"> <v-icon>launch</v-icon></v-btn>
+          <v-btn small outlined  :href="'https://kabutan.jp/stock/chart?code='+trans.code" @click.stop="" target="_blank" color="success"> <v-icon>launch</v-icon></v-btn>
         </v-col>
       </v-row>
     </v-expansion-panel-header>
