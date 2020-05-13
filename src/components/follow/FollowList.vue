@@ -45,7 +45,7 @@ export default {
       return this.follows.filter((value) => {
         var where = true
         if (this.type === 'Follow') {
-          where = where && Number(value.rating) > 3 && Number(value.Level) < 2
+          where = where && Number(value.rating) > 3
         }
         // Level Upper
         if (this.type === 'Upper') {
