@@ -118,7 +118,7 @@ export default {
   },
   methods: {
     updatetrans (trans) {
-      if (trans.sell_price !== 0 && trans.sell_price !== '') {
+      if (trans.sell_price !== '0' && trans.sell_price !== '') {
         trans.profit = (trans.sell_price - trans.bought_price) * trans.bought_volume
       }
       transCollection.doc(this.trans.id).update({...trans})

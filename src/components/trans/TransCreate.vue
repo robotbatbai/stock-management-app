@@ -27,8 +27,8 @@ export default {
         updated_at: Date.now(),
         status: false,
         profit: 0,
-        sell_price: 0,
-        bought_price: 0
+        sell_price: '0',
+        bought_price: '0'
       })
         .then(function (docRef) {
           console.log('Document written with ID: ', docRef.id)

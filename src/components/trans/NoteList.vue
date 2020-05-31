@@ -4,8 +4,8 @@
       <v-list>
         <v-list-item v-for="(note,i) in trans.note" :key="i" two-line>
           <v-list-item-content>
-            <v-list-item-title>{{note.created_at | formatDate}}</v-list-item-title>
-            <v-list-item-subtitle class="pre-formatted">{{note.memo | newline }}</v-list-item-subtitle>
+            <v-list-item-title>{{note.AddDate | formatDate}}</v-list-item-title>
+            <v-list-item-subtitle class="pre-formatted">{{note.Memo | newline }}</v-list-item-subtitle>
             <v-divider></v-divider>
           </v-list-item-content>
         </v-list-item>
@@ -36,11 +36,11 @@ export default {
   methods: {
     addNote () {
       var tmp = {
-        memo: this.newNote.replace(/(?:\r\n|\r|\n)/g, '<br>'),
-        created_at: Math.floor(Date.now() / 1000),
-        status: false
+        Memo: this.newNote.replace(/(?:\r\n|\r|\n)/g, '<br>'),
+        AddDate: Math.floor(Date.now() / 1000),
+        Status: ''
       }
-      if (typeof this.trans.note === 'undefined') {
+      if (typeof this.trans.note === 'undefined' || this.trans.note == null) {
         var notes = []
       } else {
         notes = this.trans.note

@@ -2,13 +2,13 @@
   <div :class="trans.profit < 0 ? 'red lighten-4' : ''">
     <v-expansion-panel-header>
       <v-row>
-        <v-col cols="4" md="2">
-          {{trans.code}}
+        <v-col cols="4" md="4">
+          {{trans.code}} - {{trans.name}}
         </v-col>
         <v-col cols="4" md="2">
-          <p :class="trans.profit < 0 ? 'red--text' : ''">{{new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(trans.profit)}}</p>
+          <p :class="trans.profit < 0 ? 'red--text' : ''">{{ trans.profit != 0 ? new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(trans.profit) : new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format((trans.current_price - trans.bought_price) * trans.bought_volume) }}</p>
         </v-col>
-        <v-col cols="8" md="6">
+        <v-col cols="8" md="4">
           <p>{{trans.bought_date}}</p>
         </v-col>
         <v-col cols="12" md="2">
