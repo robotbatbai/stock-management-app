@@ -29,6 +29,12 @@
             label="Take Profit"
           ></v-text-field>
       </v-col>
+      <v-col cols="12" sm="12" md=12>
+        <v-text-field
+            v-model="tags"
+            label="Tags"
+          ></v-text-field>
+      </v-col>
       <v-col cols="12" md="12">
         <v-btn class="mr-4" @click.prevent="updateFollow(localFollow)">Save</v-btn>
       </v-col>
@@ -45,12 +51,14 @@ export default {
     return {
       levels: levels,
       le: levels[this.follow.Level],
-      localFollow: Object.assign({}, this.follow)
+      localFollow: Object.assign({}, this.follow),
+      tags: this.follow.Types.toString()
     }
   },
   methods: {
     updateFollow (follow) {
       follow.Level = this.levels.indexOf(this.le)
+      follow.Types = this.tags.split(',')
       followsCollection.doc(this.follow.id).update({...follow})
         .then(function (docRef) {
           console.log('Updated document!')

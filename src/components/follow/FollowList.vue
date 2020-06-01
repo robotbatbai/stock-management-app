@@ -19,7 +19,7 @@
         v-for="follow in filterList"
         :key="follow.id"
       >
-        <follow-detail v-if="currentlyEditing !== follow.id" :follow="follow" @updateNode="currentlyEditing = $event" ></follow-detail>
+        <follow-detail v-if="currentlyEditing !== follow.id" :follow="follow" @updateNode="currentlyEditing = $event" @updateTag="search = $event" ></follow-detail>
         <follow-edit v-else @nodeUpdated="currentlyEditing = null;panel=[]" v-bind:follow="follow"></follow-edit>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -71,7 +71,7 @@ export default {
         }
         // search
         if (this.search.trim() !== '') {
-          where = where && value.Code.includes(this.search.trim())
+          where = where && (value.Code.includes(this.search.trim()) || value.Types.includes(this.search.trim()))
         }
         return where
       })

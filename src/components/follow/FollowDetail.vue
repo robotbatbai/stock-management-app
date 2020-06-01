@@ -23,8 +23,7 @@
           column
           active-class="primary--text"
         >
-          <v-chip> {{level[follow.Level]}} </v-chip>
-          <v-chip v-for="type in follow.Types" :key="type">
+          <v-chip v-for="type in follow.Types" @click="updateTags(type)" :key="type">
             {{ type }}
           </v-chip>
         </v-chip-group>
@@ -69,6 +68,9 @@ export default {
       this.currentlyEditing = follow.id
       this.followEditText = follow.Name
       this.$emit('updateNode', follow.id)
+    },
+    updateTags (type) {
+      this.$emit('updateTag', type)
     }
   }
 }
