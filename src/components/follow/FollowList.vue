@@ -2,7 +2,7 @@
   <v-col>
     <v-select
       v-model="type"
-      :items='["Follow", "Upper", "Middle", "Lower","NewItem", "Deleted"]'
+      :items='["Follow", "Upper", "Middle", "Lower","NewItem", "StopHigh"]'
       label="Level"
       solo
     >
@@ -63,12 +63,11 @@ export default {
         if (this.type === 'NewItem') {
           where = where && Number(value.Level) === 3
         }
-        // Deleted Item
-        if (this.type === 'Deleted') {
-          where = where && value.Deleted === true
-        } else {
-          where = where && value.Deleted === false
+        // Stop high
+        if (this.type === 'StopHigh') {
+          where = where && Number(value.Level) === 4
         }
+        where = where && value.Deleted === false
         // search
         if (this.search.trim() !== '') {
           where = where && (value.Code.includes(this.search.trim()) || value.Types.includes(this.search.trim()))
